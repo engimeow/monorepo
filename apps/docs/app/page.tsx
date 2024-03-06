@@ -131,14 +131,7 @@ export default function Page(): JSX.Element {
           </div>
         </div>
       </div>
-
-      <div className={styles.grid}>
-        {LINKS.map(({ title, href, description }) => (
-          <Card className={styles.card} href={href} key={title} title={title}>
-            {description}
-          </Card>
-        ))}
-      </div>
+      {process.env.NEXT_PUBLIC_SUPABASE_URL}
     </main>
   );
 }

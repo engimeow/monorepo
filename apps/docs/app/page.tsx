@@ -131,7 +131,6 @@ export default function Page(): JSX.Element {
           </div>
         </div>
       </div>
-      {process.env.NEXT_PUBLIC_SUPABASE_URL}
     </main>
   );
 }

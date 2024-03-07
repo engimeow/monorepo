@@ -1,0 +1,10 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/node_modules": true
+  }
+}

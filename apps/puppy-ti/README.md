@@ -19,3 +19,9 @@ Set up “~/Documents/EngiMeow/monorepo/apps/puppy-ti”? [Y/n] y
 Which scope should contain your project? engimeow
 Found project “engimeow/puppy-ti”. Link to it? [Y/n] y
 ```
+
+4. vercel env pull
+
+```
+vercel env pull
+```

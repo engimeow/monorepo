@@ -40,3 +40,5 @@ yarn-error.log*
 .next
 .turbo
 .env*.local
+
+.idea

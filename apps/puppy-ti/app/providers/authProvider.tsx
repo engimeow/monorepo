@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState, useEffect, createContext } from "react";
-import { User, createClient, SupabaseClient } from "@supabase/supabase-js";
+import { User, createClient } from "@supabase/supabase-js";
 
 export const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,

@@ -4,14 +4,14 @@ import { createClient } from "./lib/utils/supabase/middleware";
 export async function middleware(request: NextRequest) {
   const { supabase, response } = createClient(request);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
 
-  // private route
-  if (request.nextUrl.pathname.startsWith("/dashboard") && !user) {
-    return NextResponse.redirect(new URL("/sign-in", request.url));
-  }
+  // // private route
+  // if (request.nextUrl.pathname.startsWith("/dashboard") && !user) {
+  //   return NextResponse.redirect(new URL("/sign-in", request.url));
+  // }
 
   return response;
 }

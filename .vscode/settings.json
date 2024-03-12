@@ -3,7 +3,6 @@
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "deno.enablePaths": ["supabase/functions"],
-  "deno.importMap": "./supabase/functions/import_map.json",
   "deno.lint": true,
   "deno.unstable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -13,5 +12,6 @@
     "**/.next": true,
     "**/.turbo": true,
     "**/node_modules": true
-  }
+  },
+  "deno.enable": true
 }

@@ -1,0 +1,20 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "env:pull": "ts-node script.ts",
+    "generate": "drizzle-kit generate:pg"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^4.3.5",
+    "drizzle-kit": "^0.20.14"
+  },
+  "dependencies": {
+    "@prisma/client": "5.10.2",
+    "axios": "^1.6.7",
+    "drizzle-orm": "^0.30.1",
+    "postgres": "^3.4.3"
+  }
+}

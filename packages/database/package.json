@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "env:pull": "ts-node script.ts",
-    "generate": "drizzle-kit generate:pg"
+    "generate": "drizzle-kit generate:pg",
+    "push": "supabase db push",
+    "pull": "supabase db pull"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

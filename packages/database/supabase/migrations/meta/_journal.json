@@ -8,6 +8,69 @@
       "when": 1710221752370,
       "tag": "0000_tough_microbe",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1710227504256,
+      "tag": "0001_nosy_penance",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710227571302,
+      "tag": "0002_rich_magdalene",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710227606793,
+      "tag": "0003_daily_azazel",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1710227687312,
+      "tag": "0004_broad_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710227716295,
+      "tag": "0005_spotty_chameleon",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1710227798771,
+      "tag": "0006_lean_jasper_sitwell",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1710228051064,
+      "tag": "0007_eminent_micromax",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1710228125742,
+      "tag": "0008_secret_squirrel_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1710228201550,
+      "tag": "0009_organic_meltdown",
+      "breakpoints": true
     }
   ]
 }

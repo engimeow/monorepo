@@ -1,7 +1,12 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { createClient } from "@puppy-ti/lib/utils/supabase/server";
 
-export default function SignUpPage() {
+export default function SignUpPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
   const signUp = async (e: FormData) => {
     "use server";
     const email = e.get("email") as string;
@@ -10,7 +15,6 @@ export default function SignUpPage() {
     const supabase = createClient(cookieStore);
 
     if (!email || !password) {
-      alert("이메일과 비밀번호를 입력해주세요.");
       return;
     }
 
@@ -19,10 +23,9 @@ export default function SignUpPage() {
       password,
     });
     if (!error) {
-      console.log("이메일을 확인해주세요.");
+      return redirect("/sign-up?status=verification");
     } else {
-      console.log(error);
-      alert("에러가 발생했습니다.");
+      return redirect("/sign-up?status=failed");
     }
   };
 
@@ -34,6 +37,20 @@ export default function SignUpPage() {
         <input type="password" name="password" />
         <button type="submit">전송</button>
       </form>
+      {searchParams?.status && (
+        <div>{parseStatusToMessage(searchParams.status)}</div>
+      )}
     </div>
   );
 }
+
+const parseStatusToMessage = (status: string) => {
+  switch (status) {
+    case "verification":
+      return "이메일을 확인해주세요";
+    case "failed":
+      return "가입에 실패했습니다";
+    default:
+      return "";
+  }
+};

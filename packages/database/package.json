@@ -1,0 +1,19 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "env:pull": "ts-node script.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^4.3.5",
+    "dotenv-cli": "^7.4.1"
+  },
+  "dependencies": {
+    "@prisma/client": "5.10.2",
+    "axios": "^1.6.7",
+    "drizzle-kit": "^0.20.14",
+    "drizzle-orm": "^0.30.1"
+  }
+}

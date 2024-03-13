@@ -1,12 +1,12 @@
 import { UI } from "@puppy-ti/app/free-test/page.client";
-import { getServersideProps } from "./page.server";
+import { getQuestions } from "./page.server";
 
 export default async function FreeTestPage() {
-  const { data, error } = await getServersideProps();
+  const { questions, error } = await getQuestions();
 
-  if (error || !data) {
+  if (error || !questions) {
     return <div>Error</div>;
   }
 
-  return <UI data={data} />;
+  return <UI questions={questions} />;
 }

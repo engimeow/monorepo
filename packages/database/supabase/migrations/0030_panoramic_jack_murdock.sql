@@ -1,8 +1,15 @@
+CREATE TABLE IF NOT EXISTS "mbtis" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"mbti" "mbti" NOT NULL,
+	"content" text NOT NULL,
+	CONSTRAINT "mbtis_mbti_unique" UNIQUE("mbti")
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user_mbti_history" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"user_id" uuid,
 	"name" text NOT NULL,
-	"mbti" text,
+	"mbti" "mbti",
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint

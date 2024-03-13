@@ -1,0 +1,1 @@
+ALTER TABLE "user_mbti_history" ALTER COLUMN "mbti" SET NOT NULL;

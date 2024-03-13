@@ -1,0 +1,1 @@
+ALTER TABLE "user_mbti_history" ALTER COLUMN "id" SET DATA TYPE uuid;

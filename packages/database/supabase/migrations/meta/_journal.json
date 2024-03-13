@@ -148,6 +148,41 @@
       "when": 1710307696023,
       "tag": "0020_needy_thunderball",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1710308342221,
+      "tag": "0021_remarkable_stature",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "5",
+      "when": 1710308861626,
+      "tag": "0022_nosy_domino",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "5",
+      "when": 1710308876533,
+      "tag": "0023_brief_night_nurse",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1710308921284,
+      "tag": "0024_rare_slapstick",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1710308927909,
+      "tag": "0025_fluffy_corsair",
+      "breakpoints": true
     }
   ]
 }

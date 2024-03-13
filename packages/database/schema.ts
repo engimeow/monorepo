@@ -63,7 +63,7 @@ export const userMBTIhistory = pgTable("user_mbti_history", {
     onDelete: "cascade",
   }),
   name: text("name").notNull(),
-  mbti: mbtiEnum("mbti").references(() => mbtis.mbti, {
+  mbti: mbtiEnum("mbti").notNull().references(() => mbtis.mbti, {
     onDelete: "cascade",
   }),
   createdAt: timestamp("created_at", {

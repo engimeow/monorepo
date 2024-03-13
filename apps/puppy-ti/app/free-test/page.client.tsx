@@ -1,6 +1,7 @@
 "use client";
 import type { Database } from "@puppy-ti/database.types";
 import { createClient } from "@puppy-ti/lib/utils/supabase/client";
+import { useState } from "react";
 
 type QuestionRow = Database["public"]["Tables"]["questions"]["Row"];
 
@@ -9,15 +10,23 @@ interface UIProps {
 }
 
 export const UI = (props: UIProps) => {
-  const handleSubmit = async (e: FormData) => {
-    const supabase = createClient();
-    await supabase.functions.invoke("complete-test");
+  const [showAds, setShowAds] = useState(false);
+  const [name, setName] = useState("");
+  const [mbti, setMbti] = useState<Database["public"]["Enums"]["mbti"]>();
 
-    // await supabase.from("user_mbti_history").insert({
-    //   name: "test",
-    //   mbti: "ENFJ",
-    //   ...(userId && { user_id: userId }),
-    // });
+  const handleSubmit = async (e: FormData) => {
+    try {
+      const supabase = createClient();
+      const { data } = await supabase.functions.invoke("complete-test", {
+        body: {
+          name,
+          mbti,
+        },
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

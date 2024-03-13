@@ -22,18 +22,23 @@ Deno.serve(async (req) => {
     const { data: { user } } = await supabaseClient.auth.getUser();
     const userId = user?.id;
 
-    await supabaseClient.from("user_mbti_history").insert({
-      ...(userId && { user_id: userId }),
-      name,
-      mbti,
-    });
+    const { error, data } = await supabaseClient.from("user_mbti_history")
+      .insert({
+        ...(userId && { user_id: userId }),
+        name,
+        mbti,
+      }).select();
 
-    return new Response(JSON.stringify({ success: true }), {
+    if (error) {
+      throw error;
+    }
+
+    return new Response(JSON.stringify({ success: !!error, error, data }), {
       headers: { ...cors(requestOrigin), "Content-Type": "application/json" },
       status: 200,
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: error }), {
       headers: { ...cors(requestOrigin), "Content-Type": "application/json" },
       status: 400,
     });

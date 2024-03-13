@@ -9,15 +9,20 @@ interface UIProps {
   questions: Array<QuestionRow>;
 }
 
+type UserMBTIHistoryRow =
+  Database["public"]["Tables"]["user_mbti_history"]["Row"];
+
 export const UI = (props: UIProps) => {
   const [showAds, setShowAds] = useState(false);
   const [name, setName] = useState("");
   const [mbti, setMbti] = useState<Database["public"]["Enums"]["mbti"]>();
 
-  const handleSubmit = async (e: FormData) => {
+  const handleSubmit = async () => {
     try {
       const supabase = createClient();
-      const { data } = await supabase.functions.invoke("complete-test", {
+      const { data } = await supabase.functions.invoke<
+        Database["public"]["Tables"]["user_mbti_history"]["Row"]
+      >("complete-test", {
         body: {
           name,
           mbti,
@@ -29,17 +34,26 @@ export const UI = (props: UIProps) => {
     }
   };
 
+  if (showAds) {
+    return <div>Ads</div>;
+  }
+
   return (
     <div>
       <h1>Free Test</h1>
-      <form action={handleSubmit}>
-        <ul>
-          {props.questions.map((question) => (
-            <li key={question.id}>{question.question}</li>
-          ))}
-        </ul>
-        <button type="submit">submit</button>
-      </form>
+      <ul>
+        {props.questions.map((question) => (
+          <li key={question.id}>{question.question}</li>
+        ))}
+      </ul>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button disabled={showAds} type="button" onClick={handleSubmit}>
+        submit
+      </button>
     </div>
   );
 };

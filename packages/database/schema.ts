@@ -58,7 +58,7 @@ export const mbtis = pgTable("mbtis", {
 });
 
 export const userMBTIhistory = pgTable("user_mbti_history", {
-  id: serial("id").primaryKey(),
+  id: uuid("id").primaryKey().default("gen_random_uuid ()"),
   user_id: uuid("user_id").references(() => authUsers.id, {
     onDelete: "cascade",
   }),

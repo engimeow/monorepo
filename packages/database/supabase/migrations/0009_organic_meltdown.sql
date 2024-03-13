@@ -1,1 +1,0 @@
-ALTER TABLE "contributors" ADD PRIMARY KEY ("id");

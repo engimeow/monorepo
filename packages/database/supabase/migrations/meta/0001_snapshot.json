@@ -1,6 +1,6 @@
 {
-  "id": "f1119e8b-3dd4-4df6-b00b-8daf8f0de3af",
-  "prevId": "6182d797-4ade-46f5-ba93-4f200120621d",
+  "id": "adc44ee3-2bab-4ccc-b572-27ad6985b26d",
+  "prevId": "952cbcaa-b9c1-4861-a7d9-811923a6ff28",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -66,7 +66,7 @@
         },
         "mbti": {
           "name": "mbti",
-          "type": "text",
+          "type": "mbti",
           "primaryKey": false,
           "notNull": true
         },
@@ -84,9 +84,7 @@
         "mbtis_mbti_unique": {
           "name": "mbtis_mbti_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "mbti"
-          ]
+          "columns": ["mbti"]
         }
       }
     },
@@ -158,9 +156,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "'gen_random_uuid ()'"
         },
         "user_id": {
           "name": "user_id",
@@ -176,9 +175,9 @@
         },
         "mbti": {
           "name": "mbti",
-          "type": "text",
+          "type": "mbti",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
@@ -195,12 +194,8 @@
           "tableFrom": "user_mbti_history",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -208,12 +203,8 @@
           "name": "user_mbti_history_mbti_mbtis_mbti_fk",
           "tableFrom": "user_mbti_history",
           "tableTo": "mbtis",
-          "columnsFrom": [
-            "mbti"
-          ],
-          "columnsTo": [
-            "mbti"
-          ],
+          "columnsFrom": ["mbti"],
+          "columnsTo": ["mbti"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -222,7 +213,27 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "mbti": {
+      "name": "mbti",
+      "values": {
+        "ISTP": "ISTP",
+        "ISTJ": "ISTJ",
+        "ISFP": "ISFP",
+        "INTP": "INTP",
+        "INTJ": "INTJ",
+        "ISFJ": "ISFJ",
+        "INFJ": "INFJ",
+        "INFP": "INFP",
+        "ESTJ": "ESTJ",
+        "ESTP": "ESTP",
+        "ESFJ": "ESFJ",
+        "ESFP": "ESFP",
+        "ENFJ": "ENFJ",
+        "ENFP": "ENFP"
+      }
+    }
+  },
   "schemas": {
     "auth": "auth"
   },

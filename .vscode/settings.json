@@ -12,6 +12,5 @@
     "**/.next": true,
     "**/.turbo": true,
     "**/node_modules": true
-  },
-  "deno.enable": true
+  }
 }

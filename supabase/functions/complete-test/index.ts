@@ -20,6 +20,10 @@ Deno.serve(async (req) => {
 
     const { name, mbti } = await req.json();
 
+    if (!name || !mbti) {
+      throw new Error("Name and MBTI are required");
+    }
+
     const { data: { user } } = await supabaseClient.auth.getUser();
     const userId = user?.id;
 

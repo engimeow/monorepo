@@ -19,6 +19,7 @@ Deno.serve(async (req) => {
     );
 
     const { name, mbti } = await req.json();
+
     const { data: { user } } = await supabaseClient.auth.getUser();
     const userId = user?.id;
 

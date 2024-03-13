@@ -23,7 +23,7 @@ export const UI = (props: UIProps) => {
           mbti,
         },
       });
-      console.log(data);
+      setShowAds(true);
     } catch (error) {
       console.error(error);
     }

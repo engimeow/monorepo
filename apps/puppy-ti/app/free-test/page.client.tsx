@@ -29,23 +29,22 @@ export const UI = (props: UIProps) => {
       if (!buttonDisabled) {
         setButtonDisabled(true);
         const supabase = createClient();
-        const { data, error } =
-          await supabase.functions.invoke<USER_MBTI_HISTORY_ROW>(
-            "complete-test",
-            {
-              body: {
-                name,
-                mbti,
-              },
-            },
-          );
+        const { data, error } = await supabase.functions.invoke<{
+          data: USER_MBTI_HISTORY_ROW;
+        }>("complete-test", {
+          body: {
+            name,
+            mbti,
+          },
+        });
 
         if (error) {
           throw error;
         }
 
         if (data) {
-          setUserMBTIHistory(data);
+          console.log(data);
+          setUserMBTIHistory(data.data);
         }
       }
     } catch (error) {
@@ -59,7 +58,7 @@ export const UI = (props: UIProps) => {
       const timer = setTimeout(() => {
         // useRouter의 push 함수를 사용하여 페이지 이동
 
-        router.push(`/free-test/${userMBTIHistory.id}`);
+        router.push(`/free-test-results/${userMBTIHistory.id}`);
       }, 4000); // 4초 후에 페이지 이동
 
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 제거

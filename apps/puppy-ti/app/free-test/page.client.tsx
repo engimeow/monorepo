@@ -16,7 +16,8 @@ type USER_MBTI_HISTORY_ROW =
 type MBTI_ROW = Database["public"]["Enums"]["mbti"];
 
 export const UI = (props: UIProps) => {
-  const [showAds, setShowAds] = useState(false);
+  const [userMBTIHistory, setUserMBTIHistory] =
+    useState<USER_MBTI_HISTORY_ROW>();
   const [name, setName] = useState("");
   const [mbti, setMbti] = useState<MBTI_ROW>("ENFJ");
   const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -37,29 +38,28 @@ export const UI = (props: UIProps) => {
             },
           },
         );
-        console.log(data);
         if (data) {
-          setShowAds(true);
+          setUserMBTIHistory(data);
         }
       }
     } catch (error) {
-      console.error(error);
       setButtonDisabled(false);
+      console.error(error);
     }
   };
 
   useEffect(() => {
-    if (showAds) {
+    if (userMBTIHistory) {
       const timer = setTimeout(() => {
         // useRouter의 push 함수를 사용하여 페이지 이동
-        router.push("/your-desired-path");
+        router.push(`/free-test/${userMBTIHistory.id}`);
       }, 4000); // 4초 후에 페이지 이동
 
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 제거
     }
-  }, [showAds, router]); // showAds 또는 router 변경 시 효과 재실행
+  }, [userMBTIHistory, router]); // showAds 또는 router 변경 시 효과 재실행
 
-  if (showAds) {
+  if (userMBTIHistory) {
     return <div>Ads</div>;
   }
 

@@ -32,7 +32,7 @@ Deno.serve(async (req) => {
         ...(userId && { user_id: userId }),
         name,
         mbti,
-      }).select();
+      }).select().single();
 
     if (error) {
       throw error;

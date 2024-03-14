@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@puppy-ti/app/providers/authProvider";
 import type { Database } from "@puppy-ti/database.types";
 import { createClient } from "@puppy-ti/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
@@ -16,6 +17,7 @@ type USER_MBTI_HISTORY_ROW =
 type MBTI_ROW = Database["public"]["Enums"]["mbti"];
 
 export const UI = (props: UIProps) => {
+  const { user } = useAuth();
   const [userMBTIHistory, setUserMBTIHistory] =
     useState<USER_MBTI_HISTORY_ROW>();
   const [name, setName] = useState("");
@@ -29,41 +31,43 @@ export const UI = (props: UIProps) => {
       if (!buttonDisabled) {
         setButtonDisabled(true);
         const supabase = createClient();
-        const { data, error } = await supabase.functions.invoke<{
-          data: USER_MBTI_HISTORY_ROW;
-        }>("complete-test", {
-          body: {
-            name,
-            mbti,
-          },
-        });
+        const { data, error } =
+          await supabase.functions.invoke<USER_MBTI_HISTORY_ROW>(
+            "complete-test",
+            {
+              body: {
+                name,
+                mbti,
+              },
+            },
+          );
 
         if (error) {
           throw error;
         }
 
         if (data) {
-          console.log(data);
-          setUserMBTIHistory(data.data);
+          setUserMBTIHistory(data);
         }
       }
     } catch (error) {
       setButtonDisabled(false);
-      console.error(error);
     }
   };
 
   useEffect(() => {
     if (userMBTIHistory) {
       const timer = setTimeout(() => {
-        // useRouter의 push 함수를 사용하여 페이지 이동
+        if (user) {
+          router.push(`/free-test-results/${userMBTIHistory.id}`);
+        } else {
+          router.push(`/personalities/${userMBTIHistory.mbti}`);
+        }
+      }, 4000);
 
-        router.push(`/free-test-results/${userMBTIHistory.id}`);
-      }, 4000); // 4초 후에 페이지 이동
-
-      return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 제거
+      return () => clearTimeout(timer);
     }
-  }, [userMBTIHistory, router]); // showAds 또는 router 변경 시 효과 재실행
+  }, [userMBTIHistory, router]);
 
   if (userMBTIHistory) {
     return <div>Ads</div>;

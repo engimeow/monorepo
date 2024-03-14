@@ -1,4 +1,10 @@
 {
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "deno.enablePaths": ["supabase/functions"],
+  "deno.lint": true,
+  "deno.unstable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -6,5 +12,6 @@
     "**/.next": true,
     "**/.turbo": true,
     "**/node_modules": true
-  }
+  },
+  "deno.enable": true
 }

@@ -20,6 +20,18 @@ export async function DELETE(request: Request) {
 }
 
 async function handler(request: Request) {
+  const secFetchSite = request.headers.get("sec-fetch-site");
+
+  if (secFetchSite !== "same-origin") {
+    return new Response(
+      JSON.stringify({ error: "Request must come from same-origin" }),
+      {
+        headers: { "Content-Type": "application/json" },
+        status: 403,
+      },
+    );
+  }
+
   try {
     const requestUrl = request.url.split("/api/admin")[1];
 
@@ -30,8 +42,8 @@ async function handler(request: Request) {
       headers: {
         prefer: (request.headers.get("prefer") as string) ?? "",
         accept: request.headers.get("accept") ?? "application/json",
-        ["content-type"]: request.headers.get("content-type") ??
-          "application/json",
+        ["content-type"]:
+          request.headers.get("content-type") ?? "application/json",
         Authorization: "Bearer " + process.env.SUPABASE_SERVICE_ROLE_KEY,
         apiKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
       },

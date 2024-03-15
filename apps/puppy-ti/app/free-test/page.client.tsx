@@ -20,7 +20,7 @@ export const UI = (props: UIProps) => {
   const { user } = useAuth();
   const [userMBTIHistory, setUserMBTIHistory] =
     useState<USER_MBTI_HISTORY_ROW>();
-  const [name, setName] = useState("");
+  const [name, setName] = useState("123");
   const [mbti, setMbti] = useState<MBTI_ROW>("ENFJ");
   const [buttonDisabled, setButtonDisabled] = useState(false);
 

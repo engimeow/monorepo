@@ -1,9 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Gugi, Inter } from "next/font/google";
 import { AuthProvider } from "./providers/authProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const gugi = Gugi({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "퍼피티아이",
@@ -17,7 +20,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={gugi.className}>
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>

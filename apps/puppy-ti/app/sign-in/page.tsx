@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createClient } from "@puppy-ti/lib/utils/supabase/server";
+import { Navigation } from "@puppy-ti/components/navigation";
 
 export default function SignInPage() {
   const signin = async (e: FormData) => {
@@ -23,7 +24,8 @@ export default function SignInPage() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col mx-auto max-w-full sm:max-w-lg">
+      <Navigation />
       <form action={signin}>
         <h1>Sign In</h1>
         <input type="email" name="email" />

@@ -1,5 +1,4 @@
 "use client";
-import { useAuth } from "@puppy-ti/app/providers/authProvider";
 import type { Database } from "@puppy-ti/database.types";
 import { createClient } from "@puppy-ti/lib/utils/supabase/client";
 import { useRouter } from "next/navigation";
@@ -17,7 +16,6 @@ type USER_MBTI_HISTORY_ROW =
 type MBTI_ROW = Database["public"]["Enums"]["mbti"];
 
 export const UI = (props: UIProps) => {
-  const { user } = useAuth();
   const [userMBTIHistory, setUserMBTIHistory] =
     useState<USER_MBTI_HISTORY_ROW>();
   const [name, setName] = useState("123");
@@ -58,11 +56,11 @@ export const UI = (props: UIProps) => {
   useEffect(() => {
     if (userMBTIHistory) {
       const timer = setTimeout(() => {
-        if (user) {
-          router.push(`/free-test-results/${userMBTIHistory.id}`);
-        } else {
-          router.push(`/personalities/${userMBTIHistory.mbti}`);
-        }
+        // if (undef) {
+        //   router.push(`/free-test-results/${userMBTIHistory.id}`);
+        // } else {
+        //   router.push(`/personalities/${userMBTIHistory.mbti}`);
+        // }
       }, 4000);
 
       return () => clearTimeout(timer);

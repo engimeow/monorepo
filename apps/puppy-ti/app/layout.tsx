@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Gugi, Inter } from "next/font/google";
-import { AuthProvider } from "./providers/authProvider";
+import { Gugi } from "next/font/google";
 
 const gugi = Gugi({
   subsets: ["latin"],
@@ -20,9 +19,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={gugi.className}>
-        <AuthProvider>{children}</AuthProvider>
-      </body>
+      <body className={gugi.className}>{children}</body>
     </html>
   );
 }

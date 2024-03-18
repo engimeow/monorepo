@@ -19,7 +19,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={gugi.className}>{children}</body>
+      <body className={`${gugi.className} wrap`}>{children}</body>
     </html>
   );
 }

@@ -1,0 +1,39 @@
+.wrap {
+  @apply sm:max-w-3xl max-w-full h-full min-h-screen mx-auto shadow-xl;
+}
+.page {
+  @apply w-full h-full relative overflow-x-hidden;
+}
+.page-inner {
+  @apply px-[2rem];
+}
+
+.main-txt {
+  @apply font-light text-lg md:text-2xl;
+}
+
+.block-h {
+  @apply h-14 md:h-16;
+}
+.block-shape {
+  @apply rounded-[0.625rem] block-h;
+}
+.block-txt {
+  @apply text-lg md:text-2xl;
+}
+
+.flex-sm {
+  @apply flex flex-row gap-2 md:gap-4;
+}
+
+.flex-col-sm {
+  @apply flex flex-col gap-2 md:gap-4;
+}
+
+.flex-col-m {
+  @apply flex flex-col gap-4 md:gap-6;
+}
+
+.flex-col-lg {
+  @apply flex flex-col gap-16 md:gap-20;
+}

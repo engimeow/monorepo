@@ -39,12 +39,14 @@ export const NavigationUI = ({ isSignedIn }: NavigationUIProps) => {
             Contributors
           </Link>
           {isSignedIn ? (
-            <Link
-              className={clsx([linkStyle, "text-red-500"])}
-              href="/sign-out"
-            >
-              Sign Out
-            </Link>
+            <form className="w-full" action="/sign-out" method="post">
+              <button
+                className={clsx([linkStyle, "text-red-500"])}
+                type="submit"
+              >
+                Sign out
+              </button>
+            </form>
           ) : (
             <Link className={linkStyle} href="/sign-in">
               Sign In

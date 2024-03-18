@@ -1,4 +1,4 @@
-import { cors, isOriginAllowed } from "../_shared/cors.ts";
+import { cors } from "../_shared/cors.ts";
 import type { Database } from "../_shared/database.types.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.4.0";
 
@@ -10,9 +10,16 @@ Deno.serve(async (req) => {
   }
 
   try {
-    if (!isOriginAllowed(requestOrigin)) {
-      throw new Error("CORS error: origin not allowed");
-    }
+    const authClient = createClient<Database>(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_ANON_KEY") ?? "",
+      {
+        global: {
+          headers: { Authorization: req.headers.get("Authorization")! },
+        },
+      },
+    );
+
     const supabaseClient = createClient<Database>(
       Deno.env.get("SUPABASE_URL") ?? "",
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
@@ -24,7 +31,7 @@ Deno.serve(async (req) => {
       throw new Error("Name and MBTI are required");
     }
 
-    const { data: { user } } = await supabaseClient.auth.getUser();
+    const { data: { user } } = await authClient.auth.getUser();
     const userId = user?.id;
 
     const { error, data } = await supabaseClient.from("user_mbti_history")

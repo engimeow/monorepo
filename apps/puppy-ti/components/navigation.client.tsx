@@ -39,7 +39,7 @@ export const NavigationUI = ({ isSignedIn }: NavigationUIProps) => {
             Contributors
           </Link>
           {isSignedIn ? (
-            <form className="w-full" action="/sign-out" method="post">
+            <form className="w-full" action="/api/auth/sign-out" method="post">
               <button
                 className={clsx([linkStyle, "text-red-500"])}
                 type="submit"

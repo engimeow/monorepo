@@ -24,7 +24,7 @@ export default function Page({
   // };
 
   return (
-    <div className="background-image-container relative flex flex-col mx-auto max-w-full min-h-screen sm:max-w-3xl">
+    <div className="background-image-container page">
       <Image
         src="/landing-bg-top.png"
         alt="landing-bg-top.png"
@@ -45,22 +45,23 @@ export default function Page({
         priority
         draggable={false}
       />
-      <div className="mx-[1.875rem]">
-        <p className="text-[#C4A5FA] text-center mt-14 text-xl min-[480px]:mt-24 sm:mt-20 sm:text-3xl">
-          나의 반려견은 어떤 성향일까?
-        </p>
-
-        <div className="text-center mt-10 text-6xl sm:text-[6.875rem]">
-          <span className="text-[#1C0E35]">퍼피</span>
-          <span className="text-[#7846D0]">티아이</span>
+      <div className="flex-col-lg items-center w-full">
+        <div className="flex-col-sm">
+          <p className="text-[#C4A5FA] text-center text-xl min-[480px]:mt-24 sm:mt-20 sm:text-3xl">
+            나의 반려견은 어떤 성향일까?
+          </p>
+          <div className="text-center text-6xl sm:text-[6.875rem]">
+            <span className="text-[#1C0E35]">퍼피</span>
+            <span className="text-[#7846D0]">티아이</span>
+          </div>
         </div>
         <DogNameForm status={searchParams.status} />
-        <div className="text-center mt-20 spoqa font-light text-2xl">
+        <div className="flex-sm items-center spoqa main-txt">
           <span>참여 횟수</span>
-          <span className="mx-4">|</span>
+          <span className="text-sm md:text-lg ">|</span>
           <span>1,563 회</span>
         </div>
-        <div className="flex flex-row items-center justify-center mt-20 mb-32 spoqa gap-3 font-light text-2xl">
+        <div className="spoqa main-txt flex-sm items-center">
           <IoShareSocialOutline />
           <span>공유하기</span>
         </div>

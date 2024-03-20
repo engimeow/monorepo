@@ -1,11 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Gugi } from "next/font/google";
-
-const gugi = Gugi({
-  subsets: ["latin"],
-  weight: "400",
-});
+import { clsx } from "clsx";
+import { notoSans } from "@puppy-ti/lib/constraints/fonts";
 
 export const metadata: Metadata = {
   title: "퍼피티아이",
@@ -19,7 +15,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={`${gugi.className} wrap`}>{children}</body>
+      <body className={clsx([notoSans, "wrap"])}>{children}</body>
     </html>
   );
 }

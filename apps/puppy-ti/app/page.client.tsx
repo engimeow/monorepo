@@ -28,12 +28,10 @@ export const DogNameForm = ({ status }: { status: "invalid" }) => {
         type="text"
         name="dogName"
         placeholder="반려견 이름을 입력해 주세요."
-        className="block-shape input-shadow text-center spoqa block-txt placeholder-[#CCCCCC]"
+        className="block-shape input-shadow text-center  block-txt placeholder-[#CCCCCC]"
       />
       {status === "invalid" && (
-        <p className="spoqa main-txt text-[#7846D0]">
-          반려견 이름을 입력해주세요.
-        </p>
+        <p className="main-txt text-[#7846D0]">반려견 이름을 입력해주세요.</p>
       )}
 
       <button

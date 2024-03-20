@@ -43,3 +43,10 @@ body {
     -4px -4px 13px 0 rgba(255, 255, 255, 1),
     4px 4px 7px 0 rgba(39, 0, 121, 0.07);
 }
+
+.contributors-content-shadow {
+  box-shadow:
+    10px 2px 36px 0px rgba(219, 206, 242, 0.3),
+    -4px -4px 20px 0px rgba(79, 0, 216, 0.3),
+    4px 4px 11px 0px rgba(39, 0, 121, 0.07);
+}

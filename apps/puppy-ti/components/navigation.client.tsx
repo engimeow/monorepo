@@ -18,6 +18,10 @@ export const NavigationUI = ({ isSignedIn }: NavigationUIProps) => {
     setIsOpen((prev) => !prev);
   }, []);
 
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
     <div className="flex justify-between items-center p-4 h-14 min-h-14">
       <button onClick={handleIsOpen}>
@@ -28,14 +32,14 @@ export const NavigationUI = ({ isSignedIn }: NavigationUIProps) => {
         <PiUserCircleThin size="1.5rem" />
       </div>
       {isOpen && (
-        <div className="fixed top-14 left-0 w-full h-[calc(100%-56px)] z-50 flex flex-col items-center bg-gray-50 ">
-          <Link className={linkStyle} href="/">
+        <div className="fixed top-14 left-0 w-full h-[calc(100%-56px)] z-50 flex flex-col items-center bg-gray-50">
+          <Link href="/" className={linkStyle} onClick={closeMenu}>
             Home
           </Link>
-          <Link className={linkStyle} href="/free-test">
+          <Link href="/free-test" className={linkStyle} onClick={closeMenu}>
             Free Test
           </Link>
-          <Link className={linkStyle} href="/contributors">
+          <Link href="/contributors" className={linkStyle} onClick={closeMenu}>
             Contributors
           </Link>
           {isSignedIn ? (
@@ -48,7 +52,7 @@ export const NavigationUI = ({ isSignedIn }: NavigationUIProps) => {
               </button>
             </form>
           ) : (
-            <Link className={linkStyle} href="/sign-in">
+            <Link href="/sign-in" className={linkStyle} onClick={closeMenu}>
               Sign In
             </Link>
           )}

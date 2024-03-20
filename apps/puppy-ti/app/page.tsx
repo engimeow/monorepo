@@ -9,7 +9,7 @@ export default function Page({
   searchParams: { status: "invalid" };
 }) {
   return (
-    <div className="background-image-container page">
+    <div className="page">
       <Image
         src="/landing-bg-top.png"
         alt="landing-bg-top.png"

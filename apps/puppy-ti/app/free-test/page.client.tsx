@@ -224,23 +224,39 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
   const progressBar = useMemo(
     () => (
       <div className="flex flex-col min-h-[230px] sm:min-h-[400px] mx-[30px]">
-        <div className="w-full h-[50px] bg-white rounded-xl mt-auto mb-[30px] relative">
+        <div className="w-full h-[25px] sm:h-[50px] bg-white rounded-xl mt-auto mb-[30px] relative">
           <div
             className="bg-[#C4A5FA] h-full absolute left-0 top-0 rounded-xl"
-            style={{ width: `${progressPercentage}%` }}
+            style={{
+              width: `${progressPercentage}%`,
+            }}
           />
           <Image
             src="walk.svg"
             alt="walk"
             width={142}
             height={144}
-            className="absolute bottom-[50px]"
+            className="absolute bottom-[25px] sm:bottom-[50px]"
             style={{
               width: "142px",
               height: "144px",
               right: `${100 - progressPercentage}%`,
             }}
           />
+          {progressPercentage === 100 && (
+            <Image
+              src="pop.svg"
+              alt="pop"
+              width={142}
+              height={144}
+              className="absolute bottom-[25px] sm:bottom-[50px]"
+              style={{
+                width: "142px",
+                height: "144px",
+                right: `${100 - progressPercentage}%`,
+              }}
+            />
+          )}
         </div>
       </div>
     ),

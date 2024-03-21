@@ -8,23 +8,8 @@ export default function Page({
 }: {
   searchParams: { status: "invalid" };
 }) {
-  // const handleSubmit = async (e: FormData) => {
-  //   "use server";
-  //   const dogName = e.get("dogName");
-
-  //   if (dogName === null || dogName === "") {
-  //     return redirect("/?status=invalid");
-  //   } else {
-  //     const url = new URL("/free-test", window.location.href);
-
-  //     url.searchParams.append("dogName", dogName.toString());
-
-  //     return redirect(url.href);
-  //   }
-  // };
-
   return (
-    <div className="background-image-container page">
+    <div className="page">
       <Image
         src="/landing-bg-top.png"
         alt="landing-bg-top.png"
@@ -56,12 +41,12 @@ export default function Page({
           </div>
         </div>
         <DogNameForm status={searchParams.status} />
-        <div className="flex-sm items-center spoqa main-txt">
+        <div className="flex-sm items-center main-txt">
           <span>참여 횟수</span>
           <span className="text-sm md:text-lg ">|</span>
           <span>1,563 회</span>
         </div>
-        <div className="spoqa main-txt flex-sm items-center">
+        <div className="main-txt flex-sm items-center">
           <IoShareSocialOutline />
           <span>공유하기</span>
         </div>

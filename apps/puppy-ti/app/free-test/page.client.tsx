@@ -189,11 +189,11 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
 
                   return (
                     <div
+                      key={`${question.id}${score}`}
                       className="cursor-pointer"
                       onClick={() => handleScoreChange(question.id, score)}
                     >
                       <Image
-                        key={`${question.id}${score}`}
                         src={`/footprint/footprint_${color}_${isScoreChecked(selectedScore, score) ? "filled" : "outline"}.svg`}
                         alt={`/footprint/footprint_${color}_${isScoreChecked(selectedScore, score) ? "filled" : "outline"}`}
                         width={0}

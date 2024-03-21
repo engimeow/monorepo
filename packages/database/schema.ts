@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import {
   pgEnum,
   pgSchema,
@@ -58,7 +59,7 @@ export const mbtis = pgTable("mbtis", {
 });
 
 export const userMBTIhistory = pgTable("user_mbti_history", {
-  id: uuid("id").primaryKey().default("gen_random_uuid ()"),
+  id: uuid("id").primaryKey().default(sql`uuid_generate_v4()`),
   user_id: uuid("user_id").references(() => authUsers.id, {
     onDelete: "cascade",
   }),

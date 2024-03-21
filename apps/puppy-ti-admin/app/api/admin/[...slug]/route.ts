@@ -42,8 +42,8 @@ async function handler(request: Request) {
       headers: {
         prefer: (request.headers.get("prefer") as string) ?? "",
         accept: request.headers.get("accept") ?? "application/json",
-        ["content-type"]:
-          request.headers.get("content-type") ?? "application/json",
+        ["content-type"]: request.headers.get("content-type") ??
+          "application/json",
         Authorization: "Bearer " + process.env.SUPABASE_SERVICE_ROLE_KEY,
         apiKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
       },

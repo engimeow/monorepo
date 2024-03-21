@@ -8,7 +8,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@puppy-ti/*": ["./*"]
+      "@puppy-ti/*": ["./*"],
+      "@styles/*": ["./lib/assets/styles/*"]
     }
   },
   "include": [

@@ -137,7 +137,7 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
         ])}
         disabled={buttonDisabled}
         type="button"
-        onClick={handleSubmit}
+        onClick={handleNext}
       >
         다음
       </button>
@@ -217,7 +217,6 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
     const updatedScores = scores.filter((s) => s.questionId !== questionId);
     updatedScores.push({ questionId, score });
     setScores(updatedScores);
-    console.log("click");
   };
 
   useEffect(() => {

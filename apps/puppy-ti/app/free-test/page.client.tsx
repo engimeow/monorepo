@@ -37,6 +37,14 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
   const maxStep = useMemo(() => chunk(questions, chunkSize).length, []);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [scores, setScores] = useState<Score[]>([]);
+  const answeredQuestionsCount = useMemo(() => {
+    const uniqueQuestionIds = new Set(scores.map((score) => score.questionId));
+    return uniqueQuestionIds.size;
+  }, [scores]);
+
+  const progressPercentage = useMemo(() => {
+    return (answeredQuestionsCount / questions.length) * 100;
+  }, [answeredQuestionsCount, questions.length]);
 
   const calculateMBTIScore = (): MBTI_ROW => {
     const scoreMap = {
@@ -119,7 +127,7 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
       return (
         <button
           className={clsx([
-            "block-shape button-shadow text-white block-txt bg-[#C4A5FA]",
+            "block-shape button-shadow text-white block-txt bg-[#C4A5FA] mx-[30px]",
           ])}
           disabled={buttonDisabled}
           type="button"
@@ -133,7 +141,7 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
     return (
       <button
         className={clsx([
-          "block-shape button-shadow text-white block-txt bg-[#C4A5FA]",
+          "block-shape button-shadow text-white block-txt bg-[#C4A5FA] mx-[30px]",
         ])}
         disabled={buttonDisabled}
         type="button"
@@ -213,6 +221,32 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
     return;
   }, [steps, scores]);
 
+  const progressBar = useMemo(
+    () => (
+      <div className="flex flex-col min-h-[230px] sm:min-h-[400px] mx-[30px]">
+        <div className="w-full h-[50px] bg-white rounded-xl mt-auto mb-[30px] relative">
+          <div
+            className="bg-[#C4A5FA] h-full absolute left-0 top-0 rounded-xl"
+            style={{ width: `${progressPercentage}%` }}
+          />
+          <Image
+            src="walk.svg"
+            alt="walk"
+            width={142}
+            height={144}
+            className="absolute bottom-[50px]"
+            style={{
+              width: "142px",
+              height: "144px",
+              right: `${100 - progressPercentage}%`,
+            }}
+          />
+        </div>
+      </div>
+    ),
+    [progressPercentage],
+  );
+
   const handleScoreChange = (questionId: number, score: number) => {
     const updatedScores = scores.filter((s) => s.questionId !== questionId);
     updatedScores.push({ questionId, score });
@@ -247,10 +281,20 @@ export const UI = ({ questions, authUser, dogName }: UIProps) => {
         className="absolute z-[-1] top-0 right-0"
         priority
       />
-      <div className="flex-col-m w-full page-inner">
+      {progressBar}
+      <div className="flex-col-m w-full mb-20 page-inner px-0">
         {renderQuestions()}
         {renderButton()}
       </div>
+      <Image
+        src="/landing-bg-bottom.png"
+        alt="landing-bg-bottom.png"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="w-full absolute z-[-1] bottom-0"
+        priority
+      />
     </div>
   );
 };
